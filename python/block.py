@@ -1,6 +1,6 @@
 from dataclasses import dataclass
-from hashlib import sha256
 from transaction import Transaction
+import encrypt
 
 
 @dataclass
@@ -8,6 +8,10 @@ class Block:
     id: str
     date: str
     hash: str
-    transaction: Transaction
+    transactions: list[Transaction]
+
+
+if __name__ == "__main__":
+    pass
 
 
