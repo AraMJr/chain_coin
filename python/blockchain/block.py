@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 from transaction import Transaction
-import encrypt
 
 
 @dataclass

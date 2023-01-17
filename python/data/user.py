@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-import encrypt
+from support import encrypt
 import uuid
 
 
@@ -20,6 +20,10 @@ class User:
         private_key, public_key = encrypt.generate_key_pair()
         self.private_keys[coin_id] = private_key
         self.public_keys[coin_id] = public_key
+
+    def __str__(self):
+        return f"ID: {self.uid} -> ({self.username} | {self.email}) [{'*'*len(self.password)}]\n" \
+               f"PK: {self.public_keys}"
 
 
 def user_data(user: User) -> tuple[str, str, str, str, dict, dict]:
@@ -42,8 +46,7 @@ if __name__ == "__main__":
     print(user.private_keys.get("test_coin"))
     print(user.public_keys.get("test_coin"))
     username, email, password, uid, private_keys, public_keys = user_data(user)
-    print(username, email, password, uid, private_keys, public_keys)
+    # print(username, email, password, uid, private_keys, public_keys)
     print(hydrate_user(username, email, password, uid, private_keys, public_keys))
-
 
 
